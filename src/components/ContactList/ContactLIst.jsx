@@ -9,10 +9,10 @@ import { fetchContacts, fetchDeleteContacts } from 'redux/contacts/contacts-oper
 const ContactList = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(getFilteredContacts);
+    
 
     useEffect(() => {
         dispatch(fetchContacts())
-        
     }, [dispatch])
     
     const onDeleteContact = id => {
