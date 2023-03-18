@@ -1,0 +1,9 @@
+.boxLink{
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+}
+
+.link{
+    text-decoration: none;
+}
