@@ -2,7 +2,7 @@
 export default function HomePage () {
     return (
         <>
-        <h1>Початкова сторінка</h1>
+        <h1>Телефонна книга</h1>
         </>
     )
     

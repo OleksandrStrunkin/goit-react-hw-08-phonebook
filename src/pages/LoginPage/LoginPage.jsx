@@ -1,8 +1,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import fields from './Fields';
 import { logIn } from 'redux/Auth/auth-operation';
-import styled from './LoginPage.module.css'
+
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme();
 
 
 export default function LoginPage() {
@@ -30,16 +39,54 @@ export default function LoginPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styled.fields}>
-      <label className={styled.label}>
-        Пошта
-        <input {...fields.email} value={email} onChange={handleEmail} />
-      </label>
-      <label className={styled.label}>
-        Пароль
-        <input {...fields.password} value={password} onChange={handlePassword} />
-      </label>
-      <button type="submit" className={styled.btn}>Увійти</button>
-    </form>
+   <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+      <CssBaseline />
+        <Box sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}>
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Увійти
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Пошта"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={handleEmail}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Пароль"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={handlePassword}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Увійти
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+   </ThemeProvider>
   );
 }

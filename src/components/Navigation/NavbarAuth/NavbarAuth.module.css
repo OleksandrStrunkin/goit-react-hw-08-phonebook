@@ -2,8 +2,72 @@
     display: flex;
     gap: 20px;
     text-decoration: none;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    
 }
 
 .link{
     text-decoration: none;
 }
+
+.header {
+    background-color: #4285f4;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .header-logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .header-nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .headerLink{
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* .header-nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .homeButton {
+    background-color: #fff;
+    color: #4285f4;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    
+  } */
+  
+  .headerLink:hover{
+    
+    color: #aacaff;
+  }

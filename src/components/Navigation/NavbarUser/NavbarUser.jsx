@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "redux/Auth/auth-operation";
 import { NavLink } from "react-router-dom";
+import styled from './NavbarUser.module.css'
 
 
 export default function NavbarUser() {
@@ -12,10 +13,10 @@ export default function NavbarUser() {
     dispatch(logOut())
   };
   return (
-    <div>
+    <div className={styled.userBox}>
+      {isLogin && <NavLink to='/contacts' className={styled.headerLink}>Контакти</NavLink>}
       <p>{email}</p>
-      <button type="button" onClick={logout}>Вийти</button>
-      {isLogin && <NavLink to='/contacts'>Контакти</NavLink>}
+      <button type="button" onClick={logout} className={styled.btn}>Вийти</button>
     </div>
   );
 }

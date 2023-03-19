@@ -20,11 +20,11 @@ const ContactList = () => {
       dispatch(fetchDeleteContacts(id));
     };
      return (
-         <ul className={styled.list}>
+         <ul className={styled.contactList}>
              {contacts.map((contact) => {
                  return (  
-                         <li className={styled.listItem} key={contact.id}>{contact.name}<p>{contact.number}</p>
-                            <button onClick={() => onDeleteContact(contact.id)}>Видалити</button>
+                         <li className={styled.contact} key={contact.id}><span className={styled.contactName}>{contact.name}</span><span className={styled.contactPhone}>{contact.number}</span>
+                            <button onClick={() => onDeleteContact(contact.id)} className={styled.deleteButton}>Видалити</button>
                          </li>
                  )
              } )}

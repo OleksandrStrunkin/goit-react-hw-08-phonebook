@@ -8,8 +8,8 @@ import { useSelector } from "react-redux"
 function Navigation() {
     const isLogin = useSelector(store => store.auth.isLogin)
     return(
-        <div className={styled.navBox}>
-            <Link to="/">Home</Link>
+        <div className={styled.header}>
+            <Link to="/"className={styled.headerLink}>Home</Link>
             {isLogin ? <NavbarUser/> : <NavbarAuth/>}
         </div>
     )

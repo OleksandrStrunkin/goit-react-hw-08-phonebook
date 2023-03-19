@@ -6,8 +6,8 @@ export default function NavBarAuth() {
     
     return (
         <div className={styled.boxLink}>
-            <NavLink to='/register' className={styled.link}>Реєстрація</NavLink>
-            <NavLink to='/login' className={styled.link}>Увійти</NavLink>
+            <NavLink to='/register' className={styled.headerLink}>Реєстрація</NavLink>
+            <NavLink to='/login' className={styled.headerLink}>Увійти</NavLink>
         </div>
     )
 }

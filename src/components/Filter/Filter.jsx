@@ -1,9 +1,9 @@
 
-import styled from './Filter.module.css'
+import TextField from '@mui/material/TextField';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filter/filter-slice';
-import { getFilter } from 'redux/filter/filter-selectors';
+
 
 const Filter = () => {
     const onSetFilter = payload => {
@@ -16,13 +16,16 @@ const Filter = () => {
     
       const dispatch = useDispatch();
     
-      const filter = useSelector(getFilter);
+
 
      return (
-         <label className={styled.filter}>
-            Пошук
-            <input type="text" value={filter} onChange={updateFilter} />
-          </label>
+      <TextField
+              margin="normal"
+              id="outlined-search" 
+              label="Search field" 
+              type="search"
+              onChange={updateFilter}
+            />
      )
 }
 
