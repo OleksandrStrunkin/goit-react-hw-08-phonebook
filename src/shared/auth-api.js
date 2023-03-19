@@ -6,9 +6,9 @@ const instance = axios.create({
 
 const setToken = token => {
   if(token) {
-      return instance.defaults.headers.authorization = `Bearer ${token}`;
+      return instance.defaults.headers.common.authorization = `Bearer ${token}`;
   }
-  instance.defaults.headers.authorization = "";
+  instance.defaults.headers.common.authorization = "";
 }
 
 
@@ -31,14 +31,15 @@ export const login = async (data) => {
     return data;
 }
 
-export const getCurrent = async(token)=>{
+export const getCurrent = async(token) => {
   try {
-    setToken(token)
-    const {data} = await instance.get('/users/current');
-    return data;
-  } catch (error) {
-    setToken();
-    throw error;
+      setToken(token);
+      const data = await instance.get("/users/current");
+      return data;
+  }
+  catch(error) {
+      setToken();
+      throw error;
   }
 }
 

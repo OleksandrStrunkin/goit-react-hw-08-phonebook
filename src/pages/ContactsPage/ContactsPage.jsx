@@ -5,7 +5,7 @@ import Filter from 'components/Filter/Filter';
 
 
 
-function Contacts () {
+function ContactsPage () {
     return (
         <>
           <ContactForm/>
@@ -15,4 +15,4 @@ function Contacts () {
       );
 };
 
-export default Contacts;
+export default ContactsPage;

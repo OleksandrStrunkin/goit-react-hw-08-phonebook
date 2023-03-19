@@ -13,6 +13,7 @@ const ContactList = () => {
 
     useEffect(() => {
         dispatch(fetchContacts())
+        
     }, [dispatch])
     
     const onDeleteContact = id => {

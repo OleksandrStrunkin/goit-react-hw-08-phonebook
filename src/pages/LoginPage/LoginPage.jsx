@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import fields from './Fields';
 import { logIn } from 'redux/Auth/auth-operation';
 import styled from './LoginPage.module.css'
-import { Navigate } from 'react-router-dom';
+
 
 export default function LoginPage() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
-  const isLogin = useSelector(store => store.auth.isLogin)
+
   
 
   const handleEmail = e => {
@@ -29,9 +29,6 @@ export default function LoginPage() {
     setPassword('');
   };
 
-  if(isLogin){
-    return <Navigate to='/contacts'/>
-  }
   return (
     <form onSubmit={handleSubmit} className={styled.fields}>
       <label className={styled.label}>

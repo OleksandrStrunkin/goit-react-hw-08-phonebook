@@ -1,33 +1,44 @@
-
-import Contacts from 'pages/ContactsPage/ContactsPage';
-import HomePage from 'pages/HomePage';
-import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navigation from './Navigation/Navigation';
-import RegisterForm from '../pages/RegisterPage/RegisterPage';
 import styled from './App.module.css';
-import LoginPage from 'pages/LoginPage/LoginPage';
+import { Provider} from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from 'redux/store';
+import AuthLayout from './AuthLayout/AuthLayout';
+import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { PublicRoute } from './PublicRoute/PublicRoute';
 
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { current } from 'redux/Auth/auth-operation';
-
+const HomePage = lazy(() => import("pages/HomePage"));
+const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
+const LoginPage = lazy(() => import("pages/LoginPage/LoginPage"));
+const ContactsPage = lazy(() => import("../pages/ContactsPage/ContactsPage"));
 
 export default function App() {
- const dispatch = useDispatch();
 
- useEffect(() => {
-   dispatch(current())
- }, [dispatch])
- 
   return (
-    <div className={styled.container}>
-    <Navigation/>
-    <Routes>
-      <Route path='/' element={<HomePage/>}/>
-      <Route path='/register' element={<RegisterForm/>}/>
-      <Route path='/login' element={<LoginPage/>}/>
-      <Route path='/contacts' element={<Contacts/>}/>
-    </Routes>
-    </div>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <AuthLayout>
+          <BrowserRouter>
+            <div className={styled.container}>
+              <Navigation />
+              <Suspense>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route element={<PublicRoute/>}>
+                    <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                  </Route>
+                  <Route element={<PrivateRoute/>}>
+                    <Route path="/contacts" element={<ContactsPage />} />
+                  </Route>
+                </Routes>
+              </Suspense>
+            </div>
+          </BrowserRouter>
+        </AuthLayout>
+      </PersistGate>
+    </Provider>
   );
 }
