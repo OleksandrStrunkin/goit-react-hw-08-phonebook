@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/Auth/auth-operation';
 
 import Avatar from '@mui/material/Avatar';
@@ -18,7 +18,7 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
-
+  const error = useSelector(store => store.auth.error)
   
 
   const handleEmail = e => {
@@ -33,6 +33,9 @@ export default function LoginPage() {
     e.preventDefault();
 
     dispatch(logIn({ email, password }));
+    if (error) {
+      alert(error.statusText)
+    }
 
     setEmail('');
     setPassword('');

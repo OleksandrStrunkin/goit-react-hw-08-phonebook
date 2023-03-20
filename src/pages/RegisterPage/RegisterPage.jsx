@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+import { useSelector } from 'react-redux';
 import { register } from 'redux/Auth/auth-operation';
 
 
@@ -20,7 +20,7 @@ export default function RegisterPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
-
+  const error = useSelector(store => store.auth.error)
   
 
   const handleName = e => {
@@ -39,7 +39,10 @@ export default function RegisterPage() {
     e.preventDefault();
 
     dispatch(register({ name, email, password }));
-
+    if (error) {
+      alert(error.data.message)
+    }
+    
     setName('');
     setEmail('');
     setPassword('');

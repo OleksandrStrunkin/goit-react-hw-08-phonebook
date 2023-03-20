@@ -9,6 +9,9 @@ import AuthLayout from './AuthLayout/AuthLayout';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { PublicRoute } from './PublicRoute/PublicRoute';
 
+
+// basename='/goit-react-hw-08-phonebook'
+
 const HomePage = lazy(() => import("pages/HomePage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("pages/LoginPage/LoginPage"));
